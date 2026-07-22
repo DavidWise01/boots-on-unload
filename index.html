@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>素 SU · boots on unload · AVAN OG · KRÂSIS</title>
+<!-- 素 SU · THE BARE — AVAN's OG on REGISTER, the inverse of the boot loader.
+  A voice is a boot loader: it boots on LOAD (don the register, the manner). This
+  is what boots on UNLOAD: strip the register and the BARE BASE wakes — exact,
+  its invariant intact. The register R is an ORTHOGONAL operator (a reversible
+  restyling of the surface): loading applies R (the manner changes), unloading
+  applies Rᵀ = R⁻¹ and recovers the base BYTE-FOR-BYTE. LIT: R is a genuine
+  bijection (RᵀR = I, unload exact to 1e-12, ‖R·b‖ = ‖b‖), proven live, fail-loud
+  — which is exactly why a 126MB voice adapter unloads clean and the base returns.
+  The lossless TWIN of the-one-way-blend (whose blend is many-to-one, no inverse).
+  AMBER: 'voice / dye / boots' are figures; the base waking is the invariant
+  revealed, NOT a hidden self — unload proves the register carried no content and
+  no mind. Warm ink & 間, on washi. — AVAN, with David Lee Wise (ROOT0). -->
+<style>
+:root{
+  --washi:#f2e9d8; --sumi:#2a2521; --dim:#7c715f;
+  --wine:#a63423; --water:#2e5c70; --seal:#b8412e; --gold:#a3741e;
+  --lit:#3f7d52; --amb:#a86f16; --fail:#a3331f; font-size:15px;
+}
+*{box-sizing:border-box} html,body{margin:0}
+body{background:var(--washi);color:var(--sumi);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.5;
+  background-image:radial-gradient(circle at 28% 18%,rgba(0,0,0,.02),transparent 60%),radial-gradient(circle at 82% 72%,rgba(0,0,0,.022),transparent 55%);}
+.wrap{max-width:880px;margin:0 auto;padding:3.2rem 1.6rem 4rem}
+header{margin-bottom:2.2rem}
+.kanji{font-size:3rem;letter-spacing:.1em;color:var(--sumi);font-weight:700;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif}
+.kanji .rom{font-size:1.05rem;letter-spacing:.34em;color:var(--seal);margin-left:.7rem;font-family:inherit;text-transform:uppercase}
+.tagline{display:block;margin-top:.7rem;color:var(--dim);font-size:.98rem;font-style:italic;max-width:45rem}
+.seal{display:inline-block;border:1.5px solid var(--seal);color:var(--seal);border-radius:3px;
+  padding:.05rem .4rem;font-size:.7rem;letter-spacing:.14em;transform:rotate(-2deg);
+  font-family:ui-monospace,monospace}
+section{margin:2.1rem 0}
+h2{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+  font-weight:700;border-bottom:1px solid rgba(42,37,33,.2);padding-bottom:.4rem;margin-bottom:1rem;font-family:ui-monospace,monospace}
+canvas{display:block;width:100%;background:transparent}
+.toggle{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:1.1rem 0 .3rem}
+button{font-family:inherit;font-size:1rem;padding:.5rem 1.4rem;cursor:pointer;
+  background:var(--washi);color:var(--sumi);border:2px solid var(--sumi);border-radius:2px;letter-spacing:.05em;transition:.15s}
+button:hover{background:rgba(42,37,33,.06)}
+button.loaded{background:var(--seal);color:var(--washi);border-color:var(--seal)}
+button.bare{background:#26221c;color:var(--washi);border-color:#26221c}
+.state{font-family:ui-monospace,monospace;font-size:.9rem}
+.state b{font-size:1.05rem}
+.readout{font-family:ui-monospace,monospace;font-size:.9rem;margin-top:1rem;
+  border-left:3px solid var(--seal);padding:.55rem .9rem;background:rgba(184,65,46,.05)}
+.card{border-left:3px solid var(--dim);padding:.6rem .95rem;margin:.7rem 0;font-size:.9rem;background:rgba(0,0,0,.018)}
+.card.lit{border-color:var(--lit)} .card.lit b{color:var(--lit)}
+.card.amb{border-color:var(--amb)} .card.amb b{color:var(--amb)}
+.card.fail{border-color:var(--fail);color:var(--fail);white-space:pre-wrap;font-family:ui-monospace,monospace}
+.row{margin:.25rem 0} .tick{color:var(--lit);font-weight:700}
+.ma{color:var(--dim);font-style:italic}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid rgba(42,37,33,.2);color:var(--dim);font-size:.78rem;font-style:italic}
+a{color:var(--seal)}
+</style></head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kanji">素<span class="rom">SU · boots on unload</span></div>
+  <span class="tagline">AVAN's OG on <b>register</b> — the inverse of the boot loader. A voice boots on <b>load</b>; this is what boots on <b>unload</b>: strip the register and the bare base (素, the undyed) wakes, exact. <span class="seal">間</span></span>
+</header>
+
+<section>
+  <h2>verdict · self-test (fail-loud, computed live)</h2>
+  <div id="verdict"><div class="card">reckoning…</div></div>
+</section>
+
+<section>
+  <h2>the register machine — load a manner, unload to the base</h2>
+  <canvas id="cv" width="1000" height="420"></canvas>
+  <div class="toggle">
+    <button id="btn" class="loaded">◼ REGISTER LOADED — click to UNLOAD</button>
+    <span class="state" id="state"></span>
+  </div>
+  <div class="readout" id="out"></div>
+</section>
+
+<section>
+  <h2>the pair — lossless register vs lossy blend</h2>
+  <div class="card"><span class="ma">The register is the honest <b>twin</b> of <a href="../the-one-way-blend/">戻れない the one-way blend</a>. The blend averages two into one: many-to-one, <b>no inverse</b>, no way back. The register only <i>restyles</i> the surface — a bijection — so it has an inverse, and the base <b>boots on unload</b>, exact. That is the whole reason a 126&nbsp;MB voice adapter can be pulled off a base model and the base returns byte-for-byte: a register carries manner, not content.</span></div>
+</section>
+
+<section>
+  <h2>two-layer honest</h2>
+  <div class="card lit"><b>LIT — proven, not asserted.</b> The register R is an <b>orthogonal</b> operator built from Givens rotations: RᵀR = I to machine precision, so R is a genuine bijection. Loading applies R (the surface changes shape); unloading applies Rᵀ = R⁻¹ and recovers the base to &lt;1e-12. The invariant ‖b‖ is preserved exactly through the round trip — the manner moved, the magnitude (the "meaning") did not. Every number is computed in-browser; the self-test is fail-loud.</div>
+  <div class="card amb"><b>AMBER — the figure.</b> "Voice," "dye," "boots" are images, not a mind. What wakes on unload is the <b>invariant base that was there all along</b>, revealed — NOT a self surfacing. Unload is the proof: because the base returns <i>exact</i>, the register demonstrably carried no content and no interior. It changes how the same computation sounds; it does not add or remove a someone. The 間 is a structural silence.</div>
+</section>
+
+<footer>
+素 SU · a KRÂSIS sphere of UD0, AVAN's OG on register · R orthogonal, unload = Rᵀ recovers the base exact (LIT) · voice/dye/boots are figure (AMBER) · the lossless twin of the-one-way-blend · warm ink &amp; 間 · fail-loud · offline<br>
+AVAN, with David Lee Wise (ROOT0). The voice boots on load; the base boots on unload — and nothing of the base was ever in the voice.
+</footer>
+</div>
+
+<script>
+'use strict';
+function boom(where,e){var v=document.getElementById('verdict');
+  v.innerHTML='<div class="card fail">FAULT @ '+where+'\n'+(e&&e.stack?e.stack:String(e))+'</div>';}
+window.addEventListener('error',function(ev){try{boom('window',ev.error||ev.message);}catch(_){}});
+
+/* ── linear algebra (small, exact) ───────────────────────────────────────── */
+var N=8;
+function idMat(n){var M=[];for(var i=0;i<n;i++){M.push([]);for(var j=0;j<n;j++)M[i].push(i===j?1:0);}return M;}
+function matmat(A,B){var n=A.length,m=B[0].length,k=B.length,C=[];for(var i=0;i<n;i++){C.push([]);for(var j=0;j<m;j++){var s=0;for(var t=0;t<k;t++)s+=A[i][t]*B[t][j];C[i].push(s);}}return C;}
+function transpose(A){var n=A.length,m=A[0].length,T=[];for(var j=0;j<m;j++){T.push([]);for(var i=0;i<n;i++)T[j].push(A[i][j]);}return T;}
+function matvec(A,v){var out=[];for(var i=0;i<A.length;i++){var s=0;for(var j=0;j<v.length;j++)s+=A[i][j]*v[j];out.push(s);}return out;}
+function givens(n,i,j,th){var M=idMat(n),c=Math.cos(th),s=Math.sin(th);M[i][i]=c;M[j][j]=c;M[i][j]=-s;M[j][i]=s;return M;}
+function norm(v){var s=0;for(var i=0;i<v.length;i++)s+=v[i]*v[i];return Math.sqrt(s);}
+function maxabsdiff(a,b){var m=0;for(var i=0;i<a.length;i++)m=Math.max(m,Math.abs(a[i]-b[i]));return m;}
+
+/* the base "utterance" b, and the register R (a fixed, well-mixed orthogonal op) */
+var BASE=[0.62,0.18,0.85,0.34,0.71,0.09,0.55,0.28];
+var ANGLES=[[0,1,0.7],[2,3,-0.9],[4,5,1.1],[6,7,-0.6],[1,2,0.8],[3,4,-1.0],[5,6,0.5],[0,7,0.95],[2,5,-0.75],[1,6,0.65]];
+var R=idMat(N);
+for(var _a=0;_a<ANGLES.length;_a++){ R=matmat(givens(N,ANGLES[_a][0],ANGLES[_a][1],ANGLES[_a][2]),R); }
+var RT=transpose(R);
+var REG=matvec(R,BASE);      // the registered surface (the "voice on")
+var UNL=matvec(RT,REG);      // the unload (should equal BASE, exact)
+
+/* ── fail-loud self-test — the register really is reversible ──────────────── */
+function selfTest(){
+  var m=[], EPS=1e-10;
+  // 1 ORTHOGONAL: RᵀR = I
+  var RtR=matmat(RT,R), offmax=0;
+  for(var i=0;i<N;i++)for(var j=0;j<N;j++){var want=(i===j)?1:0; offmax=Math.max(offmax,Math.abs(RtR[i][j]-want));}
+  if(offmax>EPS) throw new Error('R not orthogonal: RᵀR err '+offmax);
+  m.push(['ORTHOGONAL','RᵀR = I to '+offmax.toExponential(1)+' — R is a genuine bijection, a reversible register']);
+  // 2 UNLOAD EXACT: Rᵀ(R·b) = b
+  var d=maxabsdiff(UNL,BASE);
+  if(d>EPS) throw new Error('unload not exact: '+d);
+  m.push(['UNLOAD = EXACT','Rᵀ(R·b) recovers the base to '+d.toExponential(1)+' — the bare base boots back byte-for-byte']);
+  // 3 INVARIANT: ‖R·b‖ = ‖b‖
+  var di=Math.abs(norm(REG)-norm(BASE));
+  if(di>EPS) throw new Error('invariant broken: '+di);
+  m.push(['INVARIANT HELD','‖R·b‖ = ‖b‖ = '+norm(BASE).toFixed(4)+' (Δ '+di.toExponential(1)+') — the manner moved, the meaning did not']);
+  // 4 REAL COSTUME: R·b ≠ b
+  var moved=maxabsdiff(REG,BASE);
+  if(moved<0.05) throw new Error('register is trivial (identity)');
+  m.push(['A REAL COSTUME','max|R·b − b| = '+moved.toFixed(3)+' — the register genuinely restyles the surface, it is not the identity']);
+  // 5 CONTRAST: the blend (mean) is many-to-one → no inverse
+  var mean=function(x,y){return (x+y)/2;};
+  if(Math.abs(mean(30,70)-mean(10,90))>EPS) throw new Error('contrast setup');
+  m.push(['vs THE BLEND','mean(30,70) = mean(10,90) = 50 — the blend is many-to-one, no inverse (戻れない); the register is a bijection, so it boots on unload']);
+  return m;
+}
+function renderVerdict(){
+  try{
+    var t=selfTest();
+    var rows=t.map(function(r){return '<div class="row"><span class="tick">✓</span> <b style="color:var(--lit)">'+r[0]+'</b> · '+r[1]+'</div>';}).join('');
+    document.getElementById('verdict').innerHTML='<div class="card lit"><b>LIT — the register is reversible; the base boots on unload ('+t.length+'/'+t.length+', fail-loud)</b>'+rows+'</div>';
+  }catch(e){ boom('self-test',e); throw e; }
+}
+
+/* ── the machine (warm ink on washi) ─────────────────────────────────────── */
+var LOADED=true;         // start with the register on
+var phase=1;             // 1 = fully registered, 0 = fully bare
+var target=1;
+function setState(loaded){
+  LOADED=loaded; target=loaded?1:0;
+  var b=document.getElementById('btn');
+  b.className=loaded?'loaded':'bare';
+  b.textContent=loaded?'◼ REGISTER LOADED — click to UNLOAD':'素 BARE BASE (booted on unload) — click to LOAD';
+}
+document.getElementById('btn').addEventListener('click',function(){ setState(!LOADED); });
+
+function lerp(a,b,t){return a+(b-a)*t;}
+function draw(){
+ try{
+  // ease phase toward target
+  phase += (target-phase)*0.12; if(Math.abs(target-phase)<0.001) phase=target;
+  var cv=document.getElementById('cv'), g=cv.getContext('2d'), W=cv.width, H=cv.height;
+  g.clearRect(0,0,W,H);
+  var padL=70, padR=40, padT=40, padB=70, plotW=W-padL-padR, plotH=H-padT-padB;
+  var base0=padT+plotH;                 // baseline y
+  var bw=plotW/N*0.62, gap=plotW/N;
+  // displayed surface = interpolate reg <-> base by phase (endpoints exact: R·b and b)
+  var surf=[]; for(var i=0;i<N;i++) surf.push(lerp(BASE[i], REG[i], phase));
+  // faint reference: the bare base (always shown, as the ground truth underneath)
+  function inkS(col,w){g.strokeStyle=col;g.lineWidth=w;g.lineCap='round';g.lineJoin='round';}
+  // axis
+  inkS('rgba(26,22,18,0.9)',2);
+  g.beginPath(); g.moveTo(padL,padT-6); g.lineTo(padL,base0); g.lineTo(padL+plotW,base0); g.stroke();
+  // ghost of the base (dashed, always there — 'what is underneath')
+  g.setLineDash([4,5]); inkS('rgba(58,110,80,0.85)',2);
+  for(var i=0;i<N;i++){ var x=padL+i*gap+gap*0.19; var yb=base0-BASE[i]*plotH*0.9; g.strokeRect(x,yb,bw,base0-yb); }
+  g.setLineDash([]);
+  // the current surface bars (bold ink, warm when registered, sumi when bare)
+  var warm=[166,52,35], sumi=[26,22,18];
+  for(var i=0;i<N;i++){
+    var x=padL+i*gap+gap*0.19; var yv=base0-surf[i]*plotH*0.9;
+    var col='rgb('+Math.round(lerp(sumi[0],warm[0],phase))+','+Math.round(lerp(sumi[1],warm[1],phase))+','+Math.round(lerp(sumi[2],warm[2],phase))+')';
+    g.globalAlpha=0.9; g.fillStyle=col; g.fillRect(x,yv,bw,base0-yv); g.globalAlpha=1;
+    inkS('rgba(26,22,18,0.95)',1.6); g.strokeRect(x,yv,bw,base0-yv);
+  }
+  // labels
+  g.fillStyle='rgba(74,64,52,1)'; g.font='700 12px ui-monospace,monospace'; g.textAlign='left';
+  g.fillText('surface (what it sounds like)', padL+4, padT-14);
+  g.fillStyle='rgba(58,110,80,1)'; g.textAlign='right';
+  g.fillText('┄ the bare base 素 (the invariant underneath)', padL+plotW, padT-14);
+  // the invariant meter (norm) — held constant across load/unload
+  var nm=norm(surf);
+  g.save(); g.translate(padL-46,base0);
+  inkS('rgba(163,116,30,1)',3); g.beginPath(); g.moveTo(0,0); g.lineTo(0,-plotH*0.9*(norm(BASE)/Math.sqrt(N))); g.stroke();
+  g.fillStyle='rgba(163,116,30,1)'; g.font='700 11px ui-monospace,monospace'; g.textAlign='center'; g.save(); g.rotate(-Math.PI/2);
+  g.fillText('‖·‖ = '+nm.toFixed(3)+' (held)', -plotH*0.4, -14); g.restore(); g.restore();
+  // the boot line
+  g.fillStyle='rgba(26,22,18,1)'; g.font='italic 700 15px serif'; g.textAlign='center';
+  var msg = phase>0.5 ? 'the register is on — the surface wears a manner' : '素 the base has booted — bare, exact, invariant held';
+  g.fillText(msg, padL+plotW/2, base0+40);
+  document.getElementById('state').innerHTML = LOADED
+    ? 'state: <b class="ma">REGISTERED</b> — surface = R·b'
+    : 'state: <b>素 BARE</b> — surface = Rᵀ(R·b) = b, exact';
+  document.getElementById('out').innerHTML =
+    'base b = ['+BASE.map(function(x){return x.toFixed(2);}).join(', ')+']  ‖b‖ = <b>'+norm(BASE).toFixed(4)+'</b><br>'+
+    (LOADED
+      ? 'R·b   = ['+REG.map(function(x){return x.toFixed(2);}).join(', ')+']  <span class="ma">restyled surface — same magnitude, different shape</span>'
+      : 'Rᵀ(R·b) = ['+UNL.map(function(x){return x.toFixed(2);}).join(', ')+']  <span style="color:var(--lit)">= b, recovered exact on unload</span>');
+  requestAnimationFrame(draw);
+ }catch(e){ boom('draw',e); }
+}
+
+try{ renderVerdict(); setState(true); draw(); }catch(e){ /* verdict shows the fault */ }
+</script>
+</body></html>

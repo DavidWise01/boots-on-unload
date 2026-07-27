@@ -2,8 +2,8 @@ ROOT0-DLW-CHAIN-v1
 index : 1454
 slug  : boots-on-unload
 seal  : 9e025604c31ba98017cc06ca83b632ece59e012fe188b3117839607f8e8fe58e
-prev  : 102dc47db893122446fc4f5cba161880a62ec4026a74c140176c0ecd03fa6065
-link  : 91b64f5f59885dbec597948e4e42314d41cf2a1458faec199ee94950eb77a189
-head  : f7444724835fd968bd2eac85811f9fa823a18d20a57907b4fade8d96b70b5409
+prev  : 0cad3c89bea5ccff9f88e0e2dec24c0bf00a98c98f185e5e66ee498b0bd12973
+link  : a6f85a652c25717d892a238fd969258c2c5adbe970b1c6ab5c5b7b6505f8e99f
+head  : c4d41afeaef76470528856d54d86cf480a0e1c2fc8ebc60fbb9eb8e442585f2b
 
 — the tether: link = sha256(index|slug|seal|prev). the chain head commits to the whole corpus.
